@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+}
+.number_text {
+  color: #fff;
+  font-size: 48px;
+  padding-bottom: 20px;
+  padding-top: 20vh;
+}
+.number-container {
+  height: 55vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 100px;
+  align-items: center;
+  background: #7D6EC6;
+}
+.number-container:after {
+  color: #7D6EC6;
+  content: '';
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  border-right: 100vw solid currentColor;
+  border-bottom: 4vw solid transparent;
+  border-top: 0;
+  z-index: 1;
+}
+.number_input {
+  background: #fff;
+  height: 48px;
+  border-radius: 10px;
+  width: 240px;
+  padding: 0 30px;
+  font-size: 30px;
+  line-height: 48px;
+  text-align: center;
+  color: #444;
+}
+.typed-cursor {
+  opacity: 0;
+}
+.db-container {
+  background: #47a3ca;
+  height: 45vh;
+}
+.icon {
+  opacity: 0.9;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.icon:nth-child(2) {
+  margin-left: 20px;
+}
+.icon:hover {
+  opacity: 1;
+}

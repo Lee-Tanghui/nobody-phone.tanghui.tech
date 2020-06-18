@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+  <script src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script> -->
+  <script src="./js/clipboard.min.js"></script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/hint.css/2.6.0/hint.min.css" rel="stylesheet">
+  <title>测试手机号生成器</title>
+</head>
+
+<body>
+  <div id="app">
+    <section class="number-container">
+      <div class="number_text">没人用の手机号</div>
+      <input id="number" style="visibility: hidden" :value="number"></input>
+      <div class="number_input"></div>
+      <div class="handle-container">
+        <span 
+          class="hint--bottom icon copy-icon" 
+          data-clipboard-target="#number"
+          aria-label="复制" 
+          @click="copy"
+          >
+          <svg  t="1592377199764" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="6843" width="48" height="48">
+            <path
+              d="M924 862a40 40 0 0 1 0-80 20 20 0 0 0 20-20V100a20 20 0 0 0-20-20H262a20 20 0 0 0-20 20 40 40 0 0 1-80 0A100 100 0 0 1 262 0h662a100 100 0 0 1 100 100v662a100 100 0 0 1-100 100z"
+              fill="#ffffff" p-id="6844"></path>
+            <path
+              d="M762 1024H100A100 100 0 0 1 0 924V262a100 100 0 0 1 100-100h662a100 100 0 0 1 100 100v662a100 100 0 0 1-100 100zM100 242a20 20 0 0 0-20 20v662a20 20 0 0 0 20 20h662a20 20 0 0 0 20-20V262a20 20 0 0 0-20-20z"
+              fill="#ffffff" p-id="6845"></path>
+            <path d="M431 807a40 40 0 0 1-40-40V419a40 40 0 0 1 80 0v348a40 40 0 0 1-40 40z" fill="#ffffff" p-id="6846">
+            </path>
+            <path d="M605 633H257a40 40 0 0 1 0-80h348a40 40 0 0 1 0 80z" fill="#ffffff" p-id="6847"></path>
+          </svg>
+        </span>
+        <span class="hint--bottom icon refresh-icon" aria-label="刷新" @click="refresh">
+          <svg class="icon" t="1592377726718" viewBox="0 0 1032 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="7738" width="200" height="200">
+            <path
+              d="M826.117983 214.265797l-97.227496-16.38378c-23.125023-3.874081-45.268726 11.861174-49.15134 34.986197-3.925281 23.125023 11.818508 45.268726 34.986197 49.151341l252.412614 42.580762c0.938654 0.136532 1.791976-0.204797 2.73063-0.119465 3.029293 0.341329 5.930587 0.042666 9.002545-0.298663 2.525833-0.255997 4.949267-0.426661 7.304436-1.160518 1.058119-0.298663 2.167438-0.085332 3.191424-0.469327 2.175971-0.810656 3.71195-2.431967 5.67459-3.541285 1.877308-1.066652 3.71195-2.047973 5.418594-3.413288 2.815962-2.218637 5.085798-4.727403 7.219103-7.509233 1.194651-1.535979 2.346635-2.986627 3.327956-4.642071 1.877308-3.327955 3.029293-6.741243 3.967946-10.410527 0.341329-1.237317 1.109318-2.175971 1.314116-3.413287 0.136532-0.639991-0.119465-1.194651-0.042666-1.791976 0.469327-3.71195 0.170664-7.381234-0.383995-11.178517-0.255997-1.877308-0.341329-3.754616-0.853322-5.589258-0.341329-1.109318-0.119465-2.261303-0.546126-3.413288l-89.394-239.868781a42.785559 42.785559 0 0 0-54.868598-25.087664c-21.973039 8.19189-33.279553 32.887025-25.087663 54.868597l32.682228 87.72149A511.56647 511.56647 0 0 0 520.50075 0.013738c-282.321546 0-511.993131 229.671585-511.993131 511.993131s229.671585 511.993131 511.993131 511.993131 511.993131-229.671585 511.993131-511.993131c0-23.551684-19.071744-42.666094-42.666095-42.666094s-42.666094 19.11441-42.666094 42.666094c0 235.260844-191.400099 426.660942-426.660942 426.660943s-426.660942-191.400099-426.660942-426.660943 191.400099-426.660942 426.660942-426.660942a426.259881 426.259881 0 0 1 305.625766 128.91987z"
+              p-id="7739" fill="#ffffff"></path>
+          </svg>
+        </span>
+
+      </div>
+    </section>
+    <section class="db-container">
+
+    </section>
+  </div>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
