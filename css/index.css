@@ -54,7 +54,7 @@ html, body {
 }
 .db-container {
   background: #47a3ca;
-  height: 45vh;
+  min-height: 45vh;
 }
 .icon {
   opacity: 0.9;
@@ -86,4 +86,23 @@ html, body {
 }
 .copy-icon--mini {
   line-height: 28px;
+}
+
+@media only screen and (max-width: 520px) {
+  .number_text {
+    font-size: 32px;
+  }
+  .number_text {
+    padding-top: 12vh;
+  }
+  .db-container {
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .db_number-item {
+    flex: none;
+    height: 38px;
+  }
 }
