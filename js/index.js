@@ -2,21 +2,45 @@ var randomNumberGenerator = (length) => {
   return Math.floor(
     Math.pow(10, length - 1) + Math.random() * 9 * Math.pow(10, length - 1)
   )
-};``
+};
+
+var db = {
+  container: '.db-container',
+  KEY: 'NOBODY_NUMBER_DB',
+  getAll() {
+    try {
+      const dbRes = localStorage.getItem(db.KEY);
+      return dbRes ? JSON.parse(dbRes) : [];
+    } catch(err) {
+      localStorage.setItem(db.KEY, JSON.stringify([]));
+      return [];
+    }
+  },
+  set(number) {
+    const dbRes = this.getAll();
+    if (dbRes.indexOf(number) !== -1) {
+      dbRes.splice(dbRes.indexOf(number), 1);
+    }
+    dbRes.unshift(number);
+    if (dbRes.length > 10) {
+      dbRes.splice(10)
+    }
+    localStorage.setItem(db.KEY, JSON.stringify(dbRes));
+  },
+}
 
 var app2 = new Vue({
   el: '#app',
   mounted() {
     this.number = this.getRandomNumber();
     this.initType(this.number);
-
-    // 初始化复制
-    this.clipboard = new ClipboardJS('.copy-icon');
+    this.dbList = db.getAll();
   },
   data: {
     number: '',
     typed: null,
     clipboard: null,
+    dbList: []
   },
   methods: {
     getRandomNumber() {
@@ -32,19 +56,31 @@ var app2 = new Vue({
     },
     copy() {
       const copyIcon = document.querySelector('.copy-icon');
+      db.set(this.number);
+      this.dbList = db.getAll();
       copyIcon.setAttribute('aria-label', '复制成功');
       setTimeout(() => {
         copyIcon.setAttribute('aria-label', '复制');
-      }, 2000);
+      }, 1200);
     },
     refresh() {
       const refreshIcon = document.querySelector('.refresh-icon');
       this.number = this.getRandomNumber();
-      // this.typed.strings.push('xxx')
-      // refreshIcon.setAttribute('aria-label', '刷新成功');
-      // setTimeout(() => {
-      //   refreshIcon.setAttribute('aria-label', '刷新');
-      // }, 2000);
+      this.typed.destroy();
+      this.initType(this.number)
+      refreshIcon.setAttribute('aria-label', '刷新成功');
+      setTimeout(() => {
+        refreshIcon.setAttribute('aria-label', '刷新');
+      }, 1200);
+    },
+    copyCache(index) {
+      this.$copyText(this.dbList[index]).then(() => {
+        const copyIcon = document.querySelector(`[data-index="${index}"]`)
+        copyIcon.setAttribute('aria-label', '复制成功');
+        setTimeout(() => {
+          copyIcon.setAttribute('aria-label', '复制');
+        }, 1200);
+      })
     }
   }
 })

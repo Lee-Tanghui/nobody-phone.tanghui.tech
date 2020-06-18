@@ -47,9 +47,10 @@ html, body {
   line-height: 48px;
   text-align: center;
   color: #444;
+  flex: none;
 }
 .typed-cursor {
-  opacity: 0;
+  display: none;
 }
 .db-container {
   background: #47a3ca;
@@ -66,4 +67,23 @@ html, body {
 }
 .icon:hover {
   opacity: 1;
+}
+.handle-container {
+  margin-top: 20px;
+}
+.db-container {
+  padding: 80px;
+}
+.db_number-item {
+  display: inline-block;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  margin: 10px;
+  border-radius: 10px;
+  color: rgba(0,0,0,0.6);
+  line-height: 28px;
+  cursor: pointer;
+}
+.copy-icon--mini {
+  line-height: 28px;
 }

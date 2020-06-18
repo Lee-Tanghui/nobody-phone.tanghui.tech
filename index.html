@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="./css/index.css">
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
   <script src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
-  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script> -->
-  <script src="./js/clipboard.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.1/vue-clipboard.min.js"></script>
   <link href="https://cdn.bootcdn.net/ajax/libs/hint.css/2.6.0/hint.min.css" rel="stylesheet">
   <title>测试手机号生成器</title>
 </head>
@@ -19,12 +19,11 @@
   <div id="app">
     <section class="number-container">
       <div class="number_text">没人用の手机号</div>
-      <input id="number" style="visibility: hidden" :value="number"></input>
       <div class="number_input"></div>
       <div class="handle-container">
         <span 
-          class="hint--bottom icon copy-icon" 
-          data-clipboard-target="#number"
+          class="copy-icon hint--bottom icon" 
+          v-clipboard:copy="number"
           aria-label="复制" 
           @click="copy"
           >
@@ -53,7 +52,21 @@
       </div>
     </section>
     <section class="db-container">
-
+      <span
+        class="db_number-item"
+        v-for="(num, index) in dbList"
+        :key="index">
+        {{ num }}
+        <span 
+          class="copy-icon--mini hint--bottom"
+          aria-label="复制"
+          :data-index="index"
+          @click="copyCache(index)">
+          <svg 
+            t="1592466140838" 
+            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2073" width="16" height="16"><path d="M672 832 224 832c-52.928 0-96-43.072-96-96L128 160c0-52.928 43.072-96 96-96l448 0c52.928 0 96 43.072 96 96l0 576C768 788.928 724.928 832 672 832zM224 128C206.368 128 192 142.368 192 160l0 576c0 17.664 14.368 32 32 32l448 0c17.664 0 32-14.336 32-32L704 160c0-17.632-14.336-32-32-32L224 128z" p-id="2074" fill="#515151"></path><path d="M800 960 320 960c-17.664 0-32-14.304-32-32s14.336-32 32-32l480 0c17.664 0 32-14.336 32-32L832 256c0-17.664 14.304-32 32-32s32 14.336 32 32l0 608C896 916.928 852.928 960 800 960z" p-id="2075" fill="#515151"></path><path d="M544 320 288 320c-17.664 0-32-14.336-32-32s14.336-32 32-32l256 0c17.696 0 32 14.336 32 32S561.696 320 544 320z" p-id="2076" fill="#515151"></path><path d="M608 480 288.032 480c-17.664 0-32-14.336-32-32s14.336-32 32-32L608 416c17.696 0 32 14.336 32 32S625.696 480 608 480z" p-id="2077" fill="#515151"></path><path d="M608 640 288 640c-17.664 0-32-14.304-32-32s14.336-32 32-32l320 0c17.696 0 32 14.304 32 32S625.696 640 608 640z" p-id="2078" fill="#515151"></path></svg>
+        </span>
+      </span>
     </section>
   </div>
   <script src="./js/index.js"></script>
